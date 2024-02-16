@@ -1,3 +1,5 @@
+// MovieAdapter.kt
+
 package com.example.flixter
 
 import android.view.LayoutInflater
@@ -9,47 +11,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class MovieAdapter(
-    private val movies: List<Movie>,
-    private val mListener: OnListFragmentInteractionListener?
+    private var movies: List<Movie>
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val titleTextView: TextView = itemView.findViewById(R.id.movie_title)
+        private val overviewTextView: TextView = itemView.findViewById(R.id.movie_overview)
+        private val posterImageView: ImageView = itemView.findViewById(R.id.movie_poster)
+
+        fun bind(movie: Movie) {
+            titleTextView.text = movie.title
+            overviewTextView.text = movie.overview
+
+            Glide.with(itemView.context)
+                .load("https://image.tmdb.org/t/p/w500/${movie.posterpath}")
+                .into(posterImageView)
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_movie, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_movie, parent, false)
         return MovieViewHolder(view)
     }
 
-    inner class MovieViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        var mItem: Movie? = null
-        val mMovieTitle: TextView = mView.findViewById<View>(R.id.movie_title) as TextView
-        val mMovieDescription: TextView = mView.findViewById<View>(R.id.movie_overview) as TextView
-        val mMoviePoster: ImageView = mView.findViewById<View>(R.id.movie_poster) as ImageView
-
-        override fun toString(): String {
-            return mMovieTitle.toString() + " '" + mMovieDescription.text + "'"
-        }
-    }
-
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = movies[position]
-
-        holder.mItem = movie
-        holder.mMovieTitle.text = movie.title
-        holder.mMovieDescription.text = movie.overview
-
-        // Load movie poster using Glide
-        Glide.with(holder.mView.context)
-            .load("https://image.tmdb.org/t/p/w500/${movie.posterpath}")
-            .into(holder.mMoviePoster)
-
-        holder.mView.setOnClickListener {
-            holder.mItem?.let { movie ->
-                mListener?.onItemClick(movie)
-            }
-        }
+        holder.bind(movies[position])
     }
 
-    override fun getItemCount(): Int {
-        return movies.size
+    override fun getItemCount(): Int = movies.size
+
+    fun setData(newMovies: List<Movie>) {
+        movies = newMovies
+        notifyDataSetChanged()
     }
 }
