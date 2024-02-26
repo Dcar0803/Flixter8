@@ -1,6 +1,7 @@
 package com.example.flixter
 
 import PersonService
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -69,6 +70,8 @@ class PersonFragment : Fragment(), OnPersonItemClickListener {
     }
 
     override fun onPersonItemClick(person: Person) {
-        Toast.makeText(requireContext(), "Clicked on: ${person.name}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), DetailActivity::class.java)
+        intent.putExtra("PERSON_ID", person.id)
+        startActivity(intent)
     }
 }

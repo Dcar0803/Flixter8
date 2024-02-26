@@ -19,10 +19,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Add the following activity declaration for DetailActivity -->
+        <activity android:name=".DetailActivity" />
     </application>
 
 </manifest>
