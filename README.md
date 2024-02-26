@@ -1,26 +1,26 @@
-# Android Project 3 - *Flixter*
+# Android Project 4 - *Flixter*
 
-Submitted by: **Deja Carter **
+Submitted by: **Deja Carter**
 
-**Flixter** is a movie browsing app that allows users to browse movies currently playing in theaters.
+**Flixter** is a movie browsing app that allows users to browse ... [TODO] 
 
-Time spent: **20** hours spent in total
+Time spent: **25** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x ] **Make a request to [The Movie Database API's `now_playing`](https://developers.themoviedb.org/3/movies/get-now-playing) endpoint to get a list of current movies**
-- [ x] **Parse through JSON data and implement a RecyclerView to display all movies**
-- [x ] **Use Glide to load and display movie poster images**
+- [X ] **Choose any endpoint on The MovieDB API except `now_playing`**
+  - Chosen Endpoint: `[TODO: FILL ME IN TO GET CREDIT]`
+- [X] **Make a request to your chosen endpoint and implement a RecyclerView to display all entries**
+- [X ] **Use Glide to load and display at least one image per entry**
+- [ ] **Click on an entry to view specific details about that entry using Intents**
 
 The following **optional** features are implemented:
 
-- [ ] Improve and customize the user interface through styling and coloring
-- [ ] Implement orientation responsivity
-  - App should neatly arrange data in both landscape and portrait mode
-- [ ] Implement Glide to display placeholder graphics during loading
-  - Note: this feature is difficult to capture in a GIF without throttling internet speeds.  Instead, include an additional screencap of your Glide code implementing the feature.  (<10 lines of code)
+- [ ] **Add another API call and RecyclerView that lets the user interact with different data.** 
+- [ ] **Add rounded corners to the images using the Glide transformations**
+- [ ] **Implement a shared element transition when user clicks into the details of a movie**
 
 The following **additional** features are implemented:
 
@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='flixter (2).gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='flixter2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
@@ -42,7 +42,8 @@ GIF created with ...
 ## Notes
 
 Describe any challenges encountered while building the app.
-Android Studio is not running properly. The app runs, but the screen buffers a lot. I did not know whether it was a bug in the code or the network connection. 
+
+The app does not show the details page. It keeps giving me errors to get the details page. The app crashes when clicking on the person image to go to the details page. 
 
 ## License
 
